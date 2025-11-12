@@ -9,10 +9,10 @@ This demo inludes:
 
 ## Pre-requisites
 
-- A modern web browser must be installed on the host computer.  We have installed ??? on the host.
 - The following docker containers
   - `pwighton/freebrowse:20251110`
   - `pwighton/areg:20251112-min-temp`
+  - You can pull these containers from dockerhub using `docker pull`
   - See [doc/building-containers.md](doc/building-containers.md) for instructions on how to build the containers
 - The password for the samba user `mars` on the mars computer
 
@@ -28,7 +28,7 @@ docker save pwighton/areg:20251112-min | gzip > containers/pwighton-areg-2025111
 
 ### Host
 
-- Install a modern browser
+- Install a modern browser.  We installed ???
 - Configure the BOLD dot-addin to send dicoms to mars:
   - Target Host: `\\192.168.2.2`
   - Target Directory: `\service`
@@ -98,4 +98,15 @@ docker run \
       --backend-port 9999
 ```
 
-On the host, browse to http://192.168.2.2.:5173/
+On the host, browse to http://192.168.2.2.:5173/ to view processing results
+
+## Cleanup
+
+On mars:
+```
+rm -rf /tmp/demo
+docker rmi pwighton/areg:20251112-min
+docker rmi pwighton/freebrowse:20251110
+```
+
+Also delete the dictories created under `/service` (e.g. `/service/20251112.demo20251112.2025.11.12_17_06_23_STD_1.3.12.2.1107.5.99.3`)
