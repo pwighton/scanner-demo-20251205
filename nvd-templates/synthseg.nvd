@@ -1,0 +1,19 @@
+{
+  "title": "Synthseg output",
+  "imageOptionsArray": [
+    {
+      "url": "data/__SUBJECT_NAME__/__INPUT-FILENAME__",
+      "name": "__INPUT-FILENAME__",
+      "colormap": "gray",
+      "visible": false,
+      "opacity": 1
+    },
+    {
+      "url": "data/__SUBJECT_NAME__/__SYNTHSEG-FILENAME__",
+      "name": "__SYNTHSEG-FILENAME__",
+      "colormap": "freesurfer",
+      "visible": true,
+      "opacity": 1
+    }
+  ]
+}

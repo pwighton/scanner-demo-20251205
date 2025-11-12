@@ -1,0 +1,12 @@
+{
+  "title": "INPUT VIS",
+  "imageOptionsArray": [
+    {
+      "url": "data/__SUBJECT-NAME__/__INPUT-FILENAME__",
+      "name": "__INPUT-FILENAME__",
+      "colormap": "gray",
+      "visible": false,
+      "opacity": 1
+    }
+  ]
+}
