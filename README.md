@@ -28,7 +28,7 @@ docker save pwighton/areg:20251112-min | gzip > containers/pwighton-areg-2025111
 
 ### Host
 
-- Install a modern browser.  We installed ???
+- Install a modern browser.  We installed [Chromium rev 1543967](https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/1543967/)
 - Configure the BOLD dot-addin to send dicoms to mars:
   - Target Host: `\\192.168.2.2`
   - Target Directory: `\service`
@@ -72,6 +72,9 @@ docker load -i /tmp/demo/containers/pwighton-freebrowse-20251110.tar.gz
 ## Run
 
 On mars, start autoregister:
+
+This invocation uses a filter so that only the RMS volume of a t1 mprage will be processed
+
 ```
 docker run -it --rm \
   -v /tmp/demo:/tmp/demo \
@@ -82,7 +85,8 @@ docker run -it --rm \
       --input-mode directory \
       --watch-directory /bold-dicom \
       --disable-default-areg \
-      --command /tmp/demo/scripts/recon.bash
+      --command /tmp/demo/scripts/recon.bash \
+      --command-filter /tmp/demo/areg-filters/tfl-epinav-abcd-1.3mm-ipat3-rms.json
 ```
 
 On mars, also start FreeBrowse:
@@ -98,7 +102,7 @@ docker run \
       --backend-port 9999
 ```
 
-On the host, browse to http://192.168.2.2.:5173/ to view processing results
+On the host, browse to http://192.168.2.2:5173/ to view processing results
 
 ## Cleanup
 
